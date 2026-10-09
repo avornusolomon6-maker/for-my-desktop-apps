@@ -19,7 +19,9 @@ jobs:
           distribution: 'temurin'
 
       - name: Build JAR
-        run: mvn -B package   # use ./gradlew build if you use Gradle
+        run: ant -noinput -buildfile build.xml jar
+      #- name: Build JAR
+     #   run: mvn -B package   # use ./gradlew build if you use Gradle
 
       - name: Build installers
         uses: shannah/jdeploy@master
