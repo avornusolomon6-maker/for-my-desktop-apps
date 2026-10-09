@@ -1,0 +1,27 @@
+name: jDeploy release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build JAR
+        run: mvn -B package   # use ./gradlew build if you use Gradle
+
+      - name: Build installers
+        uses: shannah/jdeploy@master
+        with:
+          github_token: ${{ github.token }}
