@@ -143,7 +143,8 @@ public class Main {
                 } else {
                     run(c, "UPDATE " + tableName + " SET failed_attempts = ?, locked_until = NULL" + where,
                             attempts, username);
-                    fail(ctx, 401, WRONG);
+                    
+                    fail(ctx, 401, WRONG + " Attempt " + attempts + " of " + MAX_ATTEMPTS + ".");
                 }
                 return;
             }
