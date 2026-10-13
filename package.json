@@ -1,0 +1,28 @@
+   {
+     "bin": {"Intrasem": "jdeploy-bundle/jdeploy.js"},
+     "author": "",
+     "description": "Intrasem admin app for clinical practical examinations",
+     "main": "index.js",
+     "preferGlobal": true,
+     "repository": "https://github.com/avornusolomon6-maker/for-my-desktop-apps",
+     "version": "1.0.0",
+     "jdeploy": {
+       "jdk": false,
+       "generateLegacyBundles": false,
+       "javaVersion": "23",
+       "jar": "release/Intrasem.jar",
+       "javafx": false,
+       "title": "Intrasem"
+     },
+     "dependencies": {
+       "command-exists-promise": "^2.0.2",
+       "node-fetch": "2.6.7",
+       "tar": "^4.4.8",
+       "yauzl": "^2.10.0",
+       "shelljs": "^0.8.4"
+     },
+     "license": "ISC",
+     "name": "Intrasem",
+     "files": ["jdeploy-bundle"],
+     "scripts": {"test": "echo \"Error: no test specified\" && exit 1"}
+   }
