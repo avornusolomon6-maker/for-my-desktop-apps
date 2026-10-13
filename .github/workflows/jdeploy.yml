@@ -1,29 +1,25 @@
-name: jDeploy release
+  name: jDeploy installers
 
-on:
-  release:
-    types: [published]
+  on:
+    release:
+      types: [published]
 
-permissions:
-  contents: write
+  permissions:
+    contents: write
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Build JAR
-        run: ant -noinput -buildfile build.xml jar
-      #- name: Build JAR
-     #   run: mvn -B package   # use ./gradlew build if you use Gradle
-
-      - name: Build installers
-        uses: shannah/jdeploy@master
-        with:
-          github_token: ${{ github.token }}
+  jobs:
+    installers:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-java@v4
+          with:
+            java-version: '17'
+            distribution: 'temurin'
+        - uses: actions/setup-node@v4
+          with:
+            node-version: '20'
+        - name: Build installers with jDeploy
+          uses: shannah/jdeploy@master
+          with:
+            github_token: ${{ github.token }}
